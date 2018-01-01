@@ -1,5 +1,4 @@
 # Measurement-Modeling
-Measurement &amp; Modeling
 ##Protocle d'envoi
 Le protocole d'envoi est assez simple :
 * Il envoie toutes les données avec un espace d'interval
