@@ -3,7 +3,7 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class test {
+public class test_local {
     public static void main(String[] args) {
         try {
             //We setup the server

@@ -1,7 +1,5 @@
-import com.sun.istack.internal.NotNull;
 
 public class utils {
-    @NotNull
     public static double[][] multiply(double[][] a,double[][] b){
         int n = a.length;
         double [][] c = new double[n][n];
@@ -13,7 +11,6 @@ public class utils {
         return c;
     }
 
-    @NotNull
     public static double[][] matrix_pow(double[][]a, int p){
         double[][] tmp = a.clone();
         for(int i = 1;i<p;i++){
@@ -22,7 +19,6 @@ public class utils {
         return tmp;
     }
 
-    @NotNull
     public static double[][] process(String input){
         String[] splited = input.split("\\s+");
         int p = Integer.parseInt(splited[0]);
@@ -36,7 +32,6 @@ public class utils {
         return result;
     }
 
-    @NotNull
     public static String stringify(double[][] matrix, int p){
         int n = matrix.length;
         StringBuilder builder = new StringBuilder();
