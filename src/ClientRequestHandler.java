@@ -33,14 +33,15 @@ public class ClientRequestHandler implements Runnable{
             int mean = 17;
             String fromServer,toSend;
             Random random = new Random();
-            long startTime = System.currentTimeMillis();
 
             //And the buffers
             PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
 
             //We don't randomize the matrix so the test_local results won't be affected by the matrix 'complexity'
-            double[][] tmp = {{1, 2, 3, 4, 5}, {5, 6, 7, 8, 9}, {9, 10, 11, 12, 13}, {13, 14, 15, 16, 17}, {17, 18, 19, 20, 21}};
+            double[][] tmp = utils.randomMatrix(5);
+
+            long startTime = System.currentTimeMillis();
 
             //We randomize the value of P following a normal distribution with mean and deviance
             int p = (int) random.nextGaussian() * deviance + mean;
@@ -64,7 +65,6 @@ public class ClientRequestHandler implements Runnable{
             System.out.println("Client : Message received from server");
             System.out.println("Client : " + fromServer);
 
-            //TODO: Checker si la matrice est bien calculée ?
             kkSocket.close();
         }catch (Exception e){
             e.printStackTrace();

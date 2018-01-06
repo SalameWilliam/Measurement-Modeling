@@ -1,3 +1,5 @@
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class utils {
     public static double[][] multiply(double[][] a,double[][] b){
@@ -45,5 +47,13 @@ public class utils {
             }
 
         return  builder.toString();
+    }
+
+    public  static double[][] randomMatrix(int size){
+        double[][] matrix = new double[size][size];
+        for(int i=0;i<size;i++)
+            for(int j=0;j<size;j++)
+                matrix[i][j] = ThreadLocalRandom.current().nextDouble(0,200);
+        return  matrix;
     }
 }
