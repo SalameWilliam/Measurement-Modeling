@@ -39,7 +39,7 @@ public class ClientRequestHandler implements Runnable{
             BufferedReader in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
 
             //We don't randomize the matrix so the test_local results won't be affected by the matrix 'complexity'
-            double[][] tmp = utils.randomMatrix(5);
+            double[][] tmp = utils.randomMatrix(10);
 
             long startTime = System.currentTimeMillis();
 

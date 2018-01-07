@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -55,5 +57,17 @@ public class utils {
             for(int j=0;j<size;j++)
                 matrix[i][j] = ThreadLocalRandom.current().nextDouble(0,200);
         return  matrix;
+    }
+
+    public static double firstMoment(long[] times){
+        return Arrays.stream(times).average().getAsDouble();
+    }
+
+    public static double secondMoment(long[] times){
+        long tmp = 0;
+        for (long time:times) {
+            tmp += Math.pow(time,2);
+        }
+        return (double)tmp /times.length;
     }
 }
