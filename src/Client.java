@@ -39,7 +39,6 @@ public class Client implements Runnable{
                 //We then sleep 1 second~~
                 double sleepTime = random.nextGaussian()*200+1000;
                 Thread.sleep((long)sleepTime);
-                System.out.println("Client : Sleep ended");
 
             }
         }

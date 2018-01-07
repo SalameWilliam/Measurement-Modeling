@@ -60,14 +60,16 @@ public class utils {
     }
 
     public static double firstMoment(long[] times){
-        return Arrays.stream(times).average().getAsDouble();
+        return Arrays.stream(times).average().getAsDouble()/1e6;
     }
 
     public static double secondMoment(long[] times){
-        long tmp = 0;
-        for (long time:times) {
+        double tmp = 0;
+        for (double time:times) {
             tmp += Math.pow(time,2);
         }
-        return (double)tmp /times.length;
+        tmp =  tmp /times.length;
+        tmp = tmp / 1e12;
+        return tmp;
     }
 }

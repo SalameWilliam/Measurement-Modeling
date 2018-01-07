@@ -8,8 +8,9 @@ public class service_test {
             WaitingClient client = new WaitingClient("192.168.1.2", 4444, times);
             Thread clientThread = new Thread(client);
             clientThread.start();
-            Thread.sleep(20000);
+            Thread.sleep(10000);
             clientThread.interrupt();
+            Thread.sleep(1000);
             long[] timeArray = times.stream().mapToLong(i -> i).toArray();
             System.out.println("First moment E[S]: "+utils.firstMoment(timeArray));
             System.out.println("Second moment E[S²]: "+utils.secondMoment(timeArray));

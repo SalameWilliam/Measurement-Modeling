@@ -30,7 +30,7 @@ public class ClientRequestHandler implements Runnable{
 
             //We setup the variables
             int deviance = 2;
-            int mean = 17;
+            int mean = 5;
             String fromServer,toSend;
             Random random = new Random();
 
@@ -39,9 +39,9 @@ public class ClientRequestHandler implements Runnable{
             BufferedReader in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
 
             //We don't randomize the matrix so the test_local results won't be affected by the matrix 'complexity'
-            double[][] tmp = utils.randomMatrix(10);
+            double[][] tmp = utils.randomMatrix(40);
 
-            long startTime = System.currentTimeMillis();
+            long startTime = System.nanoTime();
 
             //We randomize the value of P following a normal distribution with mean and deviance
             int p = (int) random.nextGaussian() * deviance + mean;
@@ -53,17 +53,15 @@ public class ClientRequestHandler implements Runnable{
             out.println(toSend);
 
             System.out.println("Client : Message sent to server");
-            System.out.println("Client : " + toSend);
 
             //We delay until a line is sent back
             fromServer = in.readLine();
 
-            long endTime = System.currentTimeMillis();
+            long endTime = System.nanoTime();
             //We compute and add the response time of the server
             timeList.add(endTime - startTime);
 
             System.out.println("Client : Message received from server");
-            System.out.println("Client : " + fromServer);
 
             kkSocket.close();
         }catch (Exception e){

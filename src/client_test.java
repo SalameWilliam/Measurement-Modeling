@@ -1,3 +1,4 @@
+import java.awt.desktop.SystemSleepEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -5,7 +6,7 @@ public class client_test {
     public static void main(String []args){
         try {
             //We setup the data arrays
-            int n = 20;
+            int n = 5;
             Thread[] clients = new Thread[n];
             ArrayList<Long>[] timeLists = new ArrayList[n];
 
@@ -23,8 +24,8 @@ public class client_test {
             System.out.println("================== Results ==================");
 
             double average = 0;
-            long max = 0;
-            long min = 0;
+            double max = 0;
+            double min = 0;
 
             for(int j=0;j<n;j++) {
                 //We interrupt the thread
@@ -32,11 +33,14 @@ public class client_test {
 
                 //We collect the data from each ArrayList and print them (We can write them to a file too)
                 long[] timeArray = timeLists[j].stream().mapToLong(i -> i).toArray();
-                average = average + Arrays.stream(timeArray).average().getAsDouble();
-                max = max + Arrays.stream(timeArray).max().getAsLong();
-                min = min + Arrays.stream(timeArray).min().getAsLong();
+                average = average + Arrays.stream(timeArray).average().getAsDouble()/1e6;
+                max = max + Arrays.stream(timeArray).max().getAsLong()/1e6;
+                min = min + Arrays.stream(timeArray).min().getAsLong()/1e6;
             }
+            Thread.sleep(1000);
+            System.out.println("=============================================================================");
             System.out.print(n+" "+average/n+" "+min/n+" "+max/n);
+            System.exit(0);
         }catch (Exception e){
             e.printStackTrace();
         }
